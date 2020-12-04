@@ -1,0 +1,35 @@
+# Chelcea Claudiu-Marian
+# Contact at: chelceaclaudiu01@gmail.com
+
+#  Task: On the fly analysis
+In Ninel's forest the N trees grow in a single row. Each tree (0 ≤ i ≤ N - 1) has a height of xi.
+
+The forester wants to make more statistics for the forest district, in order to cut special trees
+in view of forest rejuvenation. Specifically, he will cut only those trees that are already too big 
+and shade the neighboring trees.
+
+A tree is considered special if and only if the following conditions are true:
+1. the tres i-1 and i+1 exist
+2. xi - 1 < xi and xi> xi + 1.
+
+In this issue we will not cut trees, but we will calculate the following:
+1. S = sum of the height of special trees;
+2. m_a = arithmetic mean of the heights of special trees;
+3. xmax_odd = the maximum height of a special tree with an odd index;
+4. xmin_even = minimum height of a special tree with even index.
+
+Restrictions and clarifications
+• 0 < N < 10^7
+• 0 < xi < 10^6
+ATTENTION! The given array is very large, so its storage is limitted and it is not possible to store 
+the value using arrays. 
+
+# Solution:
+
+   I have created a display function that will be called at the end, with the parameters that are obtained before calling.
+   
+   The idea of implementation (without vectors): 
+   I start with two variables, representing the first two trees, and then, iteratively, read a third parameter: var_3.
+   The loop will check if var_2 is a special tree and, if true, check the conditions for xmax_ odd, xmin_par, etc ..
+   Then  it will advance the trees by one position, so we go through them 3 at a time.
+   At the end, the function is called and the obtained values are displayed.
