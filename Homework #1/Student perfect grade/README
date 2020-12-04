@@ -1,0 +1,27 @@
+# Chelcea Claudiu Marian
+# Contact at: claudiuchelcea01@gmail.com
+
+# Task:
+At CodeInVim University, scholarships are awarded to students with the most points. 
+We will use a the scenario in which it assumes that during a year a student has N subjects. Every
+subject is characterized by a grade xi (obtained by the student) and a number of credits(reflecting
+difficulty of the subject).
+
+We will define the score as follows:
+P = sum of(xi,ci)
+
+Mihai has just found out all the grades from year 1 and he is thinking of keeping the courses for
+the subjects he will go to for magnifications, because he wants to be among the scholarship holders.
+He wonders what is the minimum number of subjects (with a grade other than 10) that he should have taken 10
+so that his score will be greater than or equal to a given minimum_score(the last student`s student with scholarship points).
+
+# Solution:
+   I created an interchange function, a function that constantly returns the student`s current score
+   and a function that finds the optimal number of courses he needs to improve his grades at to get a scholarship.
+   After getting the input, as long as the student`s score is lower than desired scored, it is raised,
+   but only as many times as there are subjects left to bring to 10.
+   If the desired score is reached, we go out and display.
+   If the goal has not yet been reached, but the courses to be brought to maximum grade are finished,
+   we display -1, meaning that getting the scholarship is impossible.
+
+
