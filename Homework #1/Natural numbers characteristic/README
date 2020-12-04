@@ -1,0 +1,30 @@
+# Chelcea Claudiu Marian
+# Contact at: claudiuchelcea01@gmail.com
+
+# Task:
+ A general property of natural numbers says that for any natural number N, doing, repeatedly,
+difference between the number dialed with the same digits, but in descending order (n_descending) and the number
+consisting of its digits in ascending order (n_increasing), after a variable number (k) of steps, it is reached
+a sequence of numbers (p1, p2, ..., pm) of size m that is repeated indefinitely in the different calculation.
+
+This property is also preserved for numbers in the writing of which a digit can appear from any number of
+times or is equal to 0 if:
+• The numbers n_descending and n_increasing are formed from all the same number of occurrences of the digits
+from 1 to 9
+• The digit 0 is completely removed from writing n_increasing.
+
+Do: write a program that, reading from the keyboard a natural number N, follows (repeatedly) the algorithm
+of calculation of the different sequences is between n_decreasing and n_increasing and gives as output:
+
+• First of all, the number of differences that are made until the start of the period
+• Second, display the sequence of numbers that are repeated, each once, in thr order in which
+they are discovered by the proposed algorithm.
+
+
+# Solution:
+   I created a sort selection function that will help us sort the digits of the given number saved as an array
+   then put in another vector the resulting differences.
+   The program will check if the period started (through an loop that shows if repetitions occur)
+   If so, we save the period in the array named aux
+   At the end, displayed the desired result: the number of differences and the period found.
+
