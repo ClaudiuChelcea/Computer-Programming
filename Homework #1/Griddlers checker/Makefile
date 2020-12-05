@@ -5,7 +5,7 @@ CFLAGS=-Wall -Wextra
 # targets
 TARGETS=griddlers
 
-# make's
+# make
 build: $(TARGETS)
 
 griddlers: griddlers.c
