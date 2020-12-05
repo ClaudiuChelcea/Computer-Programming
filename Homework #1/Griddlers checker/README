@@ -2,7 +2,7 @@
 # Contact at: claudiuchelcea01@gmail.com
 
 # Task:
-A griddler is a game, similar to Sudoku, which aims to complete with black and white cases a grid of
+A griddler is a game similar to Sudoku, which aims to complete with black and white cases a grid of
 variable size (N rows x M columns), based on specified restrictions for each row and column.
 Thus, for each row, respectively each column, the number of black colored cases groups is specified, as well
 as their size, in the order in which they appear (from left to right for lines and from top to bottom for
