@@ -5,7 +5,7 @@ CFLAGS=-Wall -Wextra
 # targets
 TARGETS=codeinvim
 
-# make's
+# make
 build: $(TARGETS)
 
 codeinvim: codeinvim.c
