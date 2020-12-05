@@ -5,7 +5,7 @@ CFLAGS=-Wall -Wextra
 # targets
 TARGETS=nineL
 
-# make's
+# make
 build: $(TARGETS)
 
 ninel: ninel.c
