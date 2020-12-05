@@ -5,7 +5,7 @@ CFLAGS=-Wall -Wextra
 # targets
 TARGETS=vectsecv 
 
-# make's
+# make
 build: $(TARGETS)
 
 vectsecv: vectsecv.c
