@@ -1,0 +1,33 @@
+# Chelcea Claudiu Marian
+# Contact at: claudiuchelcea01@gmail.com
+
+# Task:
+A griddler is a game, similar to Sudoku, which aims to complete with black and white cases a grid of
+variable size (N rows x M columns), based on specified restrictions for each row and column.
+Thus, for each row, respectively each column, the number of black colored cases groups is specified, as well
+as their size, in the order in which they appear (from left to right for lines and from top to bottom for
+columns). 
+
+Two consecutive groups will always be separated by at least one white house.
+Ninel wants you to create a program to help him cheat in this game, checking for him if he has
+correctly completed such a grid. |
+
+The input data will be read from STDIN:
+• On the first line you will find a T number, representing the number of puzzles to be checked;
+• On the following lines the puzzles to be checked.
+
+For each puzzle:
+• On the first line, you will find two natural numbers N and M representing the dimensions of the grid;
+• On the following N lines the restrictions for each of the lines, in ascending order of the line index;
+• On the following M lines the restrictions for each of the columns, in ascending order of the index
+column;
+- For a row / column with K colored groups, the restrictions will be specified via K + 1
+natural numbers representing, in order: the number of colored groups on that row or column (K value),
+ and the size for each colored group.
+• On the following N rows and M columns, the grids completed by Nigel, given as a matrix of 1 and 0 in which a
+a value of 0 represents a white case, and a value of 1 represents a colored case.
+
+# Solution:
+   I created 3 functions: one that displays the Correct / Error answer, depending on the "output" variable
+   And two functions that go first on the rows and then on columns of the matrix and check the respective conditions
+   The main function contains a loop that will receive the number of nomograms and will start checking each one.
