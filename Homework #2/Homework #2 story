@@ -1,0 +1,127 @@
+tory:
+It is the period of a civil war.
+Rebel ships, attacking from a secret base
+they won their first victory
+against the evil Galactic Empire.
+During the attack, the rebel spies
+managed to steal the secret plans
+of a supreme weapon of the Empire:
+Death Star, an armored space station
+endowed with enough power to
+destroy an entire planet.
+
+Followed by sinister Imperial agents,
+Princess Leia runs to home
+with her ship
+owning the stolen plans
+which could save the people
+and restore freedom in the galaxy ...
+
+Once they get the plans, the Jedi Knights of the Automatics and Computers Empire must
+decipher the map. It seems that the Death Star knows the whole plan of the galaxy, and Leia managed to get a coded map
+which was saved by her good robot friend R2-D2. No longer in his youth, the android lost some
+important information. To escape, the most skilled programmers, the students of Automation and Computers, 
+must reconstruct the galactic map and guide the rebels among the obstacles that await them. 
+To succeed, they will have to
+to study carefully the received map, represented by several series of integers.
+
+# Task 1
+The first number received, n, represents the number of lines in the image to be reconstructed. The following
+lines contain information about the pixels of the image. Thus, on a line i, there is: mi ai(0),ai(1), ai(2) ...  ai(m-1)
+where m is the number of elements on a line and aij are the elements
+The first thing to know is whether the protective shield surrounding the galaxy is sufficiently charged.
+It is defined by the bytes on the outline of the map. The degree of load is defined by the arithmetic mean of
+them. It is desired to display this environment on stdout. Because it seeks the best possible accuracy for
+solving this mission, it is required that the arithmetic mean be calculated with 8 exact decimals.
+Careful!
+• In solving this task, all bytes are considered as sign numbers.
+
+# Task 2:
+Next, correct the image to get the initial map. Following the map from Task 1, you`ll get a value, k,
+representing the number of changes, followed by a sequence of k instructions to be applied
+to make the necessary changes.
+A change is coded as follows: Operation SizeOfDate Line IndexDate [ValueNew]
+Operation = The correction to be applied, represented by a letter that can be one of the following
+options:
+• “M” - modify
+• “D” - delete
+• “S” - swap
+DataSize = The size of the portion of data to be corrected. It can be of the type:
+• “C” - char (1 byte)
+• “S” - short (2 bytes)
+• “I” - int (4 bytes)
+Line = Line where data will be corrected.
+IndexDate = Index of the portion of data to be corrected. IndexDate is at least 0 for the Swap operation
+and at least 1 for Modify and Delete. 
+NewValue = The value that will appear instead of the old data to make the correction. This value is given
+only in the case of modification operations, the size dimension corresponding to the data type mentioned by
+DimensiuneDate
+
+For the modification operation, the case if the area is outside the existing map must be treated carefully.
+In this case, the remaining spaces between the old dimension and the new modified bytes will be filled with zeros,
+making sure that the map format is compatible with the size of the int data type.
+Suppose, for our example, that the third line of the map contained a single element of the type int before modification.
+In this case, an int with the value 0 on position 1 of the line will be entered, then a
+the second int, which will have the first two bytes corresponding to the entered short, and the next two zeros.
+
+# Task 3:
+Now that the map has been rebuilt, all that is needed is an escape plan. It is known that the areas they contain
+zero represents black holes. To succeed in this mission, the rebels must know the location of the largest
+black holes. A supermassive black hole represents several black holes with the property that any
+black hole can be reached by passing only through other black holes. The transition from one black hole to another is
+can be done in the directions: up, down, left or right (not diagonally). 
+Supermassiveness is represented by the number of black holes included in a meeting.
+The location of the largest black hole and its supermassiveness are required. By location is meant the black hole
+component with i minimum, j minimum, in this order.
+Careful!
+• If there are several black holes with the same supermassivity, the data for the one will be displayed
+which is located at i minimum, j minimum.
+• The map in which the hole will be searched is the one obtained after solving task 2.
+The map must be stored so that at all times each line has exactly the minimum number of bytes required
+at that time, allocating / reallocating each line as needed.
+Black hole = "00" byte
+
+Solution:
+# Task 1:
+I read the number of elements on the line in the "nr_el_row" array.
+Then i read all other values ​​in "list_of_elements" array, dinamically allocated.
+I inverted each element with a function to match the requirement output.
+With the following function, I calculate the required arithmetic mean from the margins and display it.
+
+
+# Task 2:
+I start with a large loop that will take the desired number of commands and execute something for each key
+Instructions defined: (M / D / S)
+
+Therefore, we can have 3 cases: M S D
+
+CASE 1: M, is divided into 4 cases:
+1. We are not on the last line and we need to insert "00000000"
+2. We are on the last line and we need to insert "00000000"
+3. We are not on the last line and we do NOT have to insert "00000000"
+4. We are on the last line and we do NOT have to insert "00000000"
+
+Depending on these cases, a corresponding block of code will be executed.
+
+CASE 2: D
+In the selected position, the program will replace the desired item type with 0.
+
+CASE 3: S
+In the selected positio,n the bytes of the desired element are inverted.
+
+At the end of task 2, the final matrix is ​​displayed.
+
+
+# Task 3:
+I created an array of int eleemnt from the original one (which was char).
+I turned it in a square matrix, completing the original matrix with "1"
+We initialize arrays to keep the values ​​found.
+
+The main function of this task: save_pos, receives the initial matrix,
+calculates the number of "0" in it, then fill the first black hole with 1, using flood fill algorithm
+then calculates the number of 0 remaining, their difference representing the supermassivity of the black hole,
+saved in "keep", and its position in "position_array". Then fill the next one and so on/
+until there are no more black holes.
+
+After this function, we look for the maximum supermassivity in our keep array.
+and we display it alongside its positions, after which we release the remaining allocated space.
