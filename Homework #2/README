@@ -28,7 +28,7 @@ must reconstruct the galactic map and guide the rebels among the obstacles that 
 To succeed, they will have to
 to study carefully the received map, represented by several series of integers.
 
-Task 1
+# Task 1
 The first number received, n, represents the number of lines in the image to be reconstructed. The following
 lines contain information about the pixels of the image. Thus, on a line i, there is: mi ai(0),ai(1), ai(2) ...  ai(m-1)
 where m is the number of elements on a line and aij are the elements
@@ -39,7 +39,7 @@ solving this mission, it is required that the arithmetic mean be calculated with
 Careful!
 • In solving this task, all bytes are considered as sign numbers.
 
-Task 2:
+# Task 2:
 Next, correct the image to get the initial map. Following the map from Task 1, you`ll get a value, k,
 representing the number of changes, followed by a sequence of k instructions to be applied
 to make the necessary changes.
@@ -67,7 +67,7 @@ Suppose, for our example, that the third line of the map contained a single elem
 In this case, an int with the value 0 on position 1 of the line will be entered, then a
 the second int, which will have the first two bytes corresponding to the entered short, and the next two zeros.
 
-Task 3:
+# Task 3:
 Now that the map has been rebuilt, all that is needed is an escape plan. It is known that the areas they contain
 zero represents black holes. To succeed in this mission, the rebels must know the location of the largest
 black holes. A supermassive black hole represents several black holes with the property that any
