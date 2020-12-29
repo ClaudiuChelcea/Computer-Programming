@@ -2,4 +2,4 @@
 # Contact at: claudiuchelcea01@gmail.com
 # Computer-Programming-Course
 
-This is a repository for the Computer Programming Course from the faculty.
+This is a repository for the Computer Programming Course at the Faculty of Automatic Control and Computer Science from University Politehnica Bucharest.
