@@ -1,0 +1,84 @@
+# Chelcea Claudiu Marian
+# Contact at: claudiuchelcea01@gmail.com
+
+Documentation:
+1. http://netpbm.sourceforge.net/doc/pgm.html
+2. http://netpbm.sourceforge.net/doc/ppm.html
+
+Implementation:
+This program is created without using the predefined libnetpbm C library, therefore only using the basic C libraries (stdio.h, string.h, stdlib.h, ...)
+
+Program operation
+Note: In this section, when you see a text of the form <value>, it must be there, it is a value that needs to be replaced. 
+Similarly, we denote by [value] a value which needs to be replaced, but may be missing. 
+
+The program will start without parameters and will support the introduction, one per line, of certain commands.
+For each command, it will do the required operation, after which it will display the message on the screen: (successful or
+error). The messages that will be displayed are specified below.
+
+# • LOAD <file>
+- It will load the image (PNM or PGM) from the given file into the program memory.
+- If there is already a file loaded in memory, then it will be replaced.
+- The output will be:
+∗ Loaded <file> if the operation was successfully executed.
+∗ Failed to load <file> if the operation encountered difficulties
+- When loading a new file, we will consider that it is automatically selected completely (the whole surface);
+- If the operation fails, the program will return to the state where no files are uploaded.
+
+# • SELECT <x1> <y1> <x2> <y2>
+- Narrow the effect of the next commands to the selected area, in the range [x1, x2] on the X axis (image width),
+respectively in the range [y1, y2] on the Y axis (image height).
+- The output will be:
+∗ Selected <x1> <y1> <x2> <y2> if the operation was executed successfully.
+∗ Invalid coordinates if any of the delimitation points are outside of the image.
+- After an invalid selection, the previous selection will be retained.
+- The order (x1<x2 and y1<y2) is not guaranteed.
+
+# • SELECT ALL
+– Readuce zona de select , ie la întreaga imagine.
+– Output-ul comenzii va fi întotdeauna:
+∗ Selected ALL
+
+#  • ROTATE <angle>
+- It will rotate the current selection by a certain number of degrees (expressed in degrees).
+- Allowed values for angle are +/- 90, +/- 180, +/- 270.
+- If the the angle is positive, the selection will be made to the right. If the angle is negative, the rotation will be to the left.
+- The start output will be:
+∗ Rotated <angle>, if the operation was successfully performed;
+∗ The selection must be square, if the selection is not compatible with the requirement;
+∗ Invalid parameters, if the angle is not one of the values above.
+- Note: ROTATE can only be applied for a selection of size NxN (submatrix square) or on the whole image.
+
+# • CROP
+- It will reduce the image to the one in the current selection.
+- After CROP, any command, including SELECT ALL, will only refer to the resulting subimage.
+- The command will have as output message: Cropped image.
+
+# • GRAYSCALE
+- Available only for color images, this command will transform the selection from the image into grayscale.
+- Pixel values will be calculated according to the following formula:
+∗ newRed = newGreen = newBlue = (Red + Greed + Blue) / 3
+- The output will be: "The gray filter has been applied."
+- If the current image is this RGB, the command will respond with “Grayscale filter not available” and it will leave the image unchanged.
+
+# • SEPIA
+- Available only for color images, this command will add a sepia tone on the current selection.
+- The values for sepia shall be calculated according to the following formula:
+∗ new Red = 0.393 * R + 0.769 * G + 0.189 * B
+∗ New Green = 0.349 * R + 0.686 * G + 0.168 * B
+∗ new blue = 0.272 * R + 0.534 * G + 0.131 * B
+- If there is a pixel exceeding the maximum, then we will apply the function min between calculated and maximum value.
+- The output will be: "Sepia filter applied.
+- If the current image is grayscale, the command will respond with "Sepia filter not available" and it will leave the image unchanged.
+
+# • SAVE <filename> [ascii]
+- Saves the current image to the file filename
+- If the ascii parameter is present, then it will save the pixel values in ASCII format. Otherwise, it will save in binary format.
+- If an image has not been uploaded yet, then the output message is: “No image loaded"
+
+#  • EXIT
+- Makes the program close gracefully.
+∗ This process means freeing the memory, closing files and stopping the execution of the program.
+
+#  • A line that cannot be interpreted as one of the above commands will have the result displayed: "Invalid command" and will not generate other effects.
+
