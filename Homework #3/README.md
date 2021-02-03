@@ -4,7 +4,7 @@ Chelcea Claudiu Marian
 
 Contact at: claudiuchelcea01@gmail.com
 
-I created a photo editor that receives text commands and supports performing a set of operations over PPM (portable pixmap format) -RGB- and PGM (portable graymap format) -GRAYSCALE- image file formats, both as plain (ASCII) text or binary files.
+I created a photo editor for the faculty homework that receives text commands and supports performing a set of operations over PPM (portable pixmap format) -RGB- and PGM (portable graymap format) -GRAYSCALE- image file formats, both as plain (ASCII) text or binary files.
 
 |        TYPE        |        ASCII        |        BINARY       |               COLORS                |
 | ------------------ | ------------------- | ------------------- | ----------------------------------- |
