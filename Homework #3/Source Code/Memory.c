@@ -23,7 +23,7 @@ char *user_input(void)
 
 // This function returns a value between 0 - 8 representing
 // the position in the command list of the received command
-// and returns -1 if it doesn't exist
+// and returns -1 if it doesn't exist or is incorrect
 int find_command_value(const char *commands[], char *input)
 {
 	// Receive command
