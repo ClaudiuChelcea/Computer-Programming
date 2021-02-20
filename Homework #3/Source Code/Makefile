@@ -29,6 +29,6 @@ link_objects: Program.o Commands.o Memory.o
 
 # remove executables
 clean:
-	rm -f $(TARGETS)
+	rm -f $(NAME)
 
 .PHONY: clean
