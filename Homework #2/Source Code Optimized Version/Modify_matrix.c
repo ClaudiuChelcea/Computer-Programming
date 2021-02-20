@@ -52,9 +52,7 @@ int nr_inserted_elements(int * line_elements_nr, const int targeted_line,
 	int current_int_elements_on_line = line_elements_nr[targeted_line];
 	
 	// The number of needed int values on the targeted line
-	int needed_int_elements_on_line = (element_position * element_size(type)) /  sizeof(int);
-	if( (element_position * element_size(type)) /  sizeof(int)!=0) 
-		needed_int_elements_on_line +=1;
+	int needed_int_elements_on_line = (element_position * element_size(type)) / sizeof(int);
 	
 	// Calculate the number of int values that need to be added
 	nr_of_int_to_insert = (needed_int_elements_on_line - current_int_elements_on_line);
@@ -85,15 +83,31 @@ void modify_matrix(int *** pixel_matrix, const int targeted_line, const int elem
 	int my_column = 0;
 	if(type == 'C') {
 		my_column = element_position / 4;
+		char * my_element = (char*) &((*pixel_matrix)[targeted_line][my_column]);
+		*(my_element +  element_position % 4 - 1) = replacement;
 	}
 	else if(type == 'S') {
 		my_column = element_position / 2;
+		if(element_position % 2 == 1) {	
+			char * my_element = (char*) &(*pixel_matrix)[targeted_line][my_column];
+			char * new_element = (char*) &replacement;
+ 			*(my_element+0) = *(new_element + 0);
+			*(my_element+1) = *(new_element + 1);
+		}
+		else {
+			char * my_element = (char*) &(*pixel_matrix)[targeted_line][my_column];
+			char * new_element = (char*) &replacement;
+ 			*(my_element+2) = *(new_element + 2);
+			*(my_element+3) = *(new_element + 3);
+
+		}
 	}
 	else {
-		my_column = element_position -1;
+		my_column = element_position - 1;
+		(*pixel_matrix)[targeted_line][my_column] = replacement;
 	}
 
-	(*pixel_matrix)[targeted_line][my_column] = replacement;
+	
 }
 
 // Apply the modify modification
@@ -119,7 +133,7 @@ void execute_modify(int *** pixel_matrix, int ** line_elements_nr, const char ty
 	// Apply the modification
 	modify_matrix(pixel_matrix, targeted_line, element_position, replacement, type);
 	
-	printf("Modify: %c %d %d %X\n",type,targeted_line-1,element_position,replacement);
+	//printf("Modify: %c %d %d %X\n",type,targeted_line-1,element_position,replacement);
 }
 
 // Apply the swap modification
@@ -132,10 +146,6 @@ void execute_swap(int *** pixel_matrix, const char type) {
 	// Get the targeted element position
 	int element_position;
 	scanf("%d",&element_position);
-	element_position +=1;
-
-	// Get the element who will be modified
-	int get_element = element_position / (int) sizeof(int) + 1;
 
 	// Swap by element type
 	if(type=='C') {
@@ -144,21 +154,23 @@ void execute_swap(int *** pixel_matrix, const char type) {
 	else if(type == 'S') {
 
 		// Get the element
-		char * p = (char*) &((*pixel_matrix)[targeted_line][get_element]);
+		char * p = (char*) &((*pixel_matrix)[targeted_line][element_position/2]);
 
-		// Get each octet
-		char temp = *p, temp1 = *(p+1);
-		char temp2 = *(p+2),temp3= *(p+3);
-
-		// Swap the number's octets
-		*p = temp2; *(p+1) = temp3;
-		*(p+2) = temp; *(p+3) = temp1;
+		// Swap octets
+		if(element_position % 2 == 0) {
+			char temp = *p, temp1 =*(p+1);
+			*(p+1) = temp, *p = temp1;
+		}
+		else {
+			char temp2 = *(p+2),temp3= *(p+3);
+			*(p+3) = temp2, *(p+2) = temp3;
+		}
 	}
 	else if(type=='I') {
 
 		// Get the element
-		char * p = (char*) &((*pixel_matrix)[targeted_line][get_element]);
-
+		char * p = (char*) &((*pixel_matrix)[targeted_line][element_position]);
+	
 		// Get each octet
 		char temp = *p, temp1 = *(p+1);
 		char temp2 = *(p+2), temp3= *(p+3);
@@ -168,7 +180,7 @@ void execute_swap(int *** pixel_matrix, const char type) {
 		*(p+2) = temp1, *(p+3) = temp;
 	}
 
-	printf("Swap: %c %d %d\n",type,targeted_line,element_position);
+	//printf("Swap: %c %d %d\n",type,targeted_line,element_position);
 }
 
 // Apply the delete modification
@@ -182,12 +194,36 @@ void execute_delete(int *** pixel_matrix, const char type) {
 	int element_position;
 	scanf("%d",&element_position);
 
-	// Get the element who will be modified
-	int get_element = element_position / (int) sizeof(int);
+	if(type == 'C') {
+		int my_column = element_position / 4;
+		char * p = (char*) &((*pixel_matrix)[targeted_line][my_column]);
+		if(element_position % 4 > 2)
+			*(p+4-element_position%4) = 0;
+		else 
+			*(p+4-element_position%4 - 1) = 0;
 
-	// Delete the element / the bytes in the specified position (set them to 0)
-	char * p = (char*) &((*pixel_matrix)[targeted_line][get_element]);
-	*(p+4-element_position) = 0; 
-
-	printf("Delete: %c %d %d\n",type,targeted_line,element_position);
+	}
+	else if(type=='S') {
+		int my_column = element_position / 2;
+		if(element_position %2 ==1) {
+			char * p = (char*) &((*pixel_matrix)[targeted_line][my_column]);
+			*(p+element_position%2) = 0;
+			*(p+element_position%2-1) = 0;
+		}
+		else {
+			char * p = (char*) &((*pixel_matrix)[targeted_line][my_column]);
+			*(p+element_position%2+1) = 0;
+			*(p+element_position%2+2) = 0;
+		}
+	}
+	else {
+	
+		char * p = (char*) &((*pixel_matrix)[targeted_line][element_position-1]);
+		
+		*(p) = 0;
+		*(p + 1) = 0;
+		*(p + 2) = 0;
+		*(p + 3) = 0;
+		
+	}
 }
