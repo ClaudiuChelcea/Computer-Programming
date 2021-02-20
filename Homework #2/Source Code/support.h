@@ -236,7 +236,7 @@ void reverse_an_element (int q, char** list) {
 // Get the arithmetic mean of the margins
 double margin_arithmetic_mean (int** nr_el_on_rows, char*** list, int nr_lin) {
 
-	// TOp row
+	// Top row
 	int sum = 0, count = 0;
 	for (int i = 0; i < nr_el_on_rows[0][0]; i++) {
 		for (int j = 0; j < 8; j = j + 2) {
