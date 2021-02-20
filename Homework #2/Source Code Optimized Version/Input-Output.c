@@ -2,6 +2,42 @@
 #include <stdlib.h>
 #include "Input-Output.h"
 
+/*  Calculate the arithmetic mean from the margins created by the margins of the HEX values
+	@return margin_aritmetic_mean */
+void show_arithmetic_mean_of_byte_margins(int* line_elements_nr, const int nr_lines, int ** pixel_matrix)
+{
+	double arithmetic_mean = 0.00;
+	int nr_of_elements = 0;
+	// Check if the element is on the margin of the matrix
+	for(int i=0;i<nr_lines;i++) {
+		for(int j=0;j<line_elements_nr[i];j++) {
+			if(i==0 || i == nr_lines-1) {
+				// The top and bottom rows
+				char* p = (char*) &(pixel_matrix[i][j]); 		
+				arithmetic_mean +=*p + *(p+1)+ *(p+2)+ *(p+3);
+			} else if(j==0) {
+				// Left column
+				char* p = (char*) &(pixel_matrix[i][j]); 		
+				arithmetic_mean +=*p;
+				if(line_elements_nr[i] == 1) {
+					arithmetic_mean +=*(p+3);
+				}
+			} else if(j==(line_elements_nr[i]-1)) {
+				// Right column
+				char* p = (char*) &(pixel_matrix[i][j]);
+				arithmetic_mean +=*(p+3);
+			}
+			
+			
+		}
+	}
+	// The top and bottom elements * 4 (each int has 4 bytes) and the right & left column only once 
+	nr_of_elements = (line_elements_nr[0] + line_elements_nr[nr_lines-1])*4 + (nr_lines-2) *2;
+
+	// Display the output on stdin
+	printf("task 1\n%.8lf\n",(double)arithmetic_mean/(double)nr_of_elements);
+}
+
 // Allocate the memory necessary and scan the matrix
 void scan_matrix(int *** pixel_matrix,int* line_elements_nr, const int nr_lines)
 {
