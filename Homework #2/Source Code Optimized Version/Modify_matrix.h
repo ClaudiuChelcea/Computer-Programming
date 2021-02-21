@@ -15,7 +15,7 @@ int nr_inserted_elements(int *line_elements_nr, const int targeted_line,
 // Return the number of int elements on the current line
 int get_current_line_size(int *line_elements_nr, const int targeted_line);
 
-// Allocate the memory to insert int values
+// Allocate the memory to insert int values in the matrix
 void insert_int_values(int ***pixel_matrix, const int targeted_line,
 					   const int to_insert, int **line_elements_nr);
 
