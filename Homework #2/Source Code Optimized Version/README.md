@@ -1,6 +1,6 @@
-# Chelcea Claudiu Marian
-# Contact at claudiuchelcea01@gmail.com
-# This "Source Code Optimized Version" folder contains my second method of solving the homework,
+<em>Chelcea Claudiu Marian</em>
+<em>Contact at claudiuchelcea01@gmail.com</em>
+This "Source Code Optimized Version" folder contains my second method of solving the homework,
 being <b>98%</b> more efficient than the previous version (reducing time from a few hours to less than 2 minutes).
 
 Solutions:
