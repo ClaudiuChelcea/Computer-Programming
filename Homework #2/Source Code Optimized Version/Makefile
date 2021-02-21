@@ -3,12 +3,12 @@
 
 # compiler setup
 CC=gcc
-CFLAGS=-Wall -Wextra
+CFLAGS=-Wall -Wextra -g
 OBJ=stardust.o Input-Output.o Modify_matrix.o
-NAME=map
+NAME=star_dust
 
 # define targets
-TARGETS: main input-output modify_matrix link_objects
+build: main input-output modify_matrix link_objects
 
 # execute
 main: stardust.c
