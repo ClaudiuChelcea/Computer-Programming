@@ -1,5 +1,5 @@
-<em>Chelcea Claudiu Marian</em><b>
-<em>Contact at claudiuchelcea01@gmail.com</em><b>
+<em>Chelcea Claudiu Marian</em><br>
+<em>Contact at claudiuchelcea01@gmail.com</em><br>
 This "Source Code Optimized Version" folder contains my second method of solving the homework,
 being <b>98%</b> more efficient than the previous version (reducing time from a few hours to less than 2 minutes).
 
