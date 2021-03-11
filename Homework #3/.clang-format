@@ -1,0 +1,162 @@
+# Chelcea Claudiu
+# .clang-file for C language
+---
+Language: Cpp
+
+# The base style is LLVM
+BasedOnStyle: LLVM
+
+# Align function arguments after linebreak
+AccessModifierOffset: -4
+
+# Variable alignment
+AlignAfterOpenBracket: Align
+
+# Horizontally align operands
+AlignEscapedNewlinesLeft: false
+
+# Aligns operands
+AlignOperands: true
+
+# Assignments and declarations
+AlignConsecutiveAssignments: false
+AlignConsecutiveDeclarations: false
+
+# Aligns comments properly
+AlignTrailingComments: true
+
+# Short statements on a single line
+AllowShortBlocksOnASingleLine: false
+
+# Switch cases on a single line
+AllowShortCaseLabelsOnASingleLine: false
+
+# Short function
+AllowShortFunctionsOnASingleLine: false
+
+# Short if statements
+AllowShortIfStatementsOnASingleLine: false
+
+# Short loops on a single line
+AllowShortLoopsOnASingleLine: false
+
+# Function return types.
+AlwaysBreakAfterDefinitionReturnType: false
+
+# Function parameters
+AllowAllParametersOfDeclarationOnNextLine: false
+
+# For longer, multiline strings
+AlwaysBreakBeforeMultilineStrings: true
+
+# A function call’s arguments will either be all on the same line or on
+# a new line each
+BinPackArguments: true
+
+# The same thing applies to function definition | declaration
+BinPackParameters: true
+
+# Binary operators
+BreakBeforeBinaryOperators: None
+
+# Ternary operators
+BreakBeforeTernaryOperators: false
+
+# Strings
+BreakStringLiterals: false
+
+# Newlines after certain elements
+BreakBeforeBraces: Linux
+BraceWrapping: 
+  AfterClass:      false
+  AfterControlStatement: false
+  AfterEnum:       true
+  AfterFunction:   true
+  AfterNamespace:  false
+  AfterObjCDeclaration: false
+  AfterStruct:     true
+  AfterUnion:      true
+  BeforeCatch:     true
+  BeforeElse:      false
+  IndentBraces:    false
+  AfterCaseLabel:  false
+BreakBeforeBraces: Custom
+
+# Break constructor initializers before comma
+BreakConstructorInitializersBeforeComma: true
+
+# Line continuation indents
+ContinuationIndentWidth: 4
+
+# Line width
+ColumnLimit: 80
+
+# Pragmas and Regex
+CommentPragmas:  '^ *IWYU pragma:'
+
+# Constructors
+ConstructorInitializerAllOnOneLineOrOnePerLine: false
+ConstructorInitializerIndentWidth: 4
+
+# List
+Cpp11BracedListStyle: true
+
+# Format
+DisableFormat: false
+
+# Indent each case by one level
+IndentCaseLabels: false
+IndentWidth: 4
+
+# The number of consecutive empty lines
+MaxEmptyLinesToKeep: 1
+
+# Indent if the function name is wrapped after the type
+IndentWrappedFunctionNames: false
+
+# Pointer and reference alignment
+NamespaceIndentation: None
+PointerAlignment: Right
+
+# Sorting the included files
+SortIncludes: false
+
+# Cast spaces
+SpaceAfterCStyleCast: false
+SpacesInCStyleCastParentheses: false
+
+# Spaces for the assigment operators
+SpaceBeforeAssignmentOperators: true
+
+# Spaces for the control statements
+SpaceBeforeParens: ControlStatements
+
+# Keep empty parantheses to () than ( )
+SpaceInEmptyParentheses: false
+
+# The number of spaces before trailing comments
+SpacesBeforeTrailingComments: 1
+
+# Extra spaces for () and [] parantheses
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+
+# Angles < >
+SpacesInAngles: false
+
+# Penalty for breaking a function call after "call(".
+PenaltyBreakBeforeFirstCallParameter: 19
+
+# The penalty for each line break inside a comment.
+PenaltyBreakComment: 300
+
+# The penalty for each line break inside a string literal.
+PenaltyBreakString: 1000
+
+# The penalty for each character outside of the column limit.
+PenaltyExcessCharacter: 1000000
+
+# Spacing options
+Standard: Cpp11
+TabWidth: 4
+UseTab: ForContinuationAndIndentation
